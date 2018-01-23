@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Created by: Victor Andrews
+on Jaunary 18, 2018
+-->
+<html>
+<body>
+
+<h1>My Second Google Map</h1>
+<select onchange="getMap(this)">
+  <option value="ebisu">Ebisu</option>
+  <option value="nurburgring">Nurburgring</option>
+  <option value="circuitdemonaco">Circuit de Monaco</option>
+  <option value="silverstone">Silverstone</option>
+</select>
+</br>
+</br>
+<div id="map" style="width:1200px;height:850px;background:yellow"></div>
+
+<script>
+function myMap(lat, long) {
+  if(lat == null){
+    lat = 37.6386;
+  }
+  if(long == null){
+    long = 140.3665;
+  }
+  var myLatlng = new google.maps.LatLng(lat, long);
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {center: myLatlng, zoom: 9};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({position: myLatlng});
+  marker.setMap(map);
+}
+function getMap(e){
+  if(e.value == "ebisu"){
+    myMap(37.6386, 140.3665);
+  }else if(e.value == "nurburgring"){
+    myMap(50.3341, 6.9427);
+  } else if (e.value == "circuitdemonaco") {
+    myMap(43.73416373, 7.418998324);
+  } else if (e.value == "silverstone") {
+    myMap(52.0733, -1.0147);
+  }
+
+}
+
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKmLL5pV0rBkkpP5WuUrLcvUyZzUu_nrY&callback=getMap">
+    </script>
+<!--To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>
